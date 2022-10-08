@@ -1,40 +1,29 @@
 package com.example.news.di
 
-import com.example.news.data.network.NewsService
-import com.example.news.utils.Const.Companion.BASE_URL
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Singleton
+import com.example.news.presentation.details.DetailsFragmentViewModel
+import com.example.news.presentation.favorite.FavoriteFragmentViewModel
+import com.example.news.presentation.main.MainFragmentViewModel
+import com.example.news.presentation.search.SearchFragmentViewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.dsl.module
 
-@Module
-@InstallIn(SingletonComponent::class)
-object AppModule {
+val appModule = module {
 
-    @Provides
-    fun baseUrl() = BASE_URL
+    viewModel{
+        MainFragmentViewModel()
+    }
 
-    @Provides
-    fun logging() = HttpLoggingInterceptor()
-        .setLevel(HttpLoggingInterceptor.Level.BODY)
+    viewModel{
+        DetailsFragmentViewModel()
+    }
 
-    @Provides
-    fun okHttpClient() = OkHttpClient.Builder()
-        .addInterceptor(logging())
-        .build()
+    viewModel{
+        FavoriteFragmentViewModel()
+    }
 
-    @Provides
-    @Singleton
-    fun provideRetrofit(baseUrls: String): NewsService =
-        Retrofit.Builder()
-            .baseUrl(baseUrl())
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(okHttpClient())
-            .build()
-            .create(NewsService::class.java)
+    viewModel{
+        SearchFragmentViewModel()
+    }
+
+
 }
