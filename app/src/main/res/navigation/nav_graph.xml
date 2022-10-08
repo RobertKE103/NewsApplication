@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.example.news.ui.details.DetailsFragment"
+        android:name="com.example.news.presentation.details.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" />
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.example.news.ui.favorite.FavoriteFragment"
+        android:name="com.example.news.presentation.favorite.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" >
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.news.ui.main.MainFragment"
+        android:name="com.example.news.presentation.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
@@ -38,7 +38,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.example.news.ui.search.SearchFragment"
+        android:name="com.example.news.presentation.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
         <action
@@ -49,4 +49,6 @@
             app:popEnterAnim="@android:anim/slide_in_left"
             app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
+
+
 </navigation>

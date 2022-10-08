@@ -1,4 +1,4 @@
-package com.example.news.data.api
+package com.example.news.data.network
 
 import com.example.news.utils.Const.Companion.API_KEY
 import retrofit2.http.GET
@@ -12,6 +12,7 @@ interface NewsService {
         @Query("page") page: Int = 1,
         @Query("apiKey") apiKey: String = API_KEY
     )
+
     @GET("v2/top-headlines")
     suspend fun getHeadlines(
         @Query("country") country: String = "ru",
