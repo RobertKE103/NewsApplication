@@ -7,7 +7,11 @@ import org.koin.dsl.module
 val domainModule = module {
 
     factory {
-        GetFavoriteUseCase(repository = get())
+        GetFavoriteListUseCase(repository = get())
+    }
+
+    factory {
+        GetFavoriteItemUseCase(repository = get())
     }
 
     factory {
@@ -25,6 +29,7 @@ val domainModule = module {
     factory {
         GetHeadlinesUseCase(repository = get())
     }
+
 
 
 }

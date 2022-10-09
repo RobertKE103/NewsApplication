@@ -4,15 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewPropertyAnimator
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.example.news.databinding.FragmentSearchBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : Fragment() {
 
-    private var viewModel: SearchFragmentViewModel
-    = ViewModelProvider(this)[SearchFragmentViewModel::class.java]
+    private val viewModel by viewModel<SearchFragmentViewModel>()
     private var _binding: FragmentSearchBinding ?= null
     private val binding get() = _binding!!
 

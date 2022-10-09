@@ -5,13 +5,13 @@ import retrofit2.Response
 
 class RetrofitRepository {
 
-    suspend fun getEverything2(key: String): Response<NewsResponse> {
+    suspend fun getEverything(key: String): Response<NewsResponse> {
         return RetrofitInstance.api.getEverything(
             query = key
         )
     }
 
-    suspend fun getHeadlines2(category: String): Response<NewsResponse> {
+    suspend fun getHeadlines(category: String): Response<NewsResponse> {
         return RetrofitInstance.api.getHeadlines(
             category = category
         )

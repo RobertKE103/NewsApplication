@@ -6,8 +6,8 @@ import retrofit2.Response
 
 class GetEverythingUseCase(private val repository: NewsRepository){
 
-    suspend operator fun invoke(): Response<NewsResponse> {
-        return repository.getEverything()
+    suspend operator fun invoke(key: String): Response<NewsResponse> {
+        return repository.getEverything(key)
     }
 
 }

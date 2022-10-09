@@ -1,29 +1,27 @@
 package com.example.news.data.mappers
 
 import com.example.news.data.entity.ArticleDbModel
-import com.example.news.data.entity.NewsResponseDbModel
 import com.example.news.data.entity.SourceDbModel
 import com.example.news.domain.models.Article
-import com.example.news.domain.models.NewsResponse
 import com.example.news.domain.models.Source
 
 class NewsMapper {
 
-    fun mapEntityToDbModel(newsResponse: NewsResponse): NewsResponseDbModel = NewsResponseDbModel(
-        articleEntities = newsResponse.articles.map { mapArticleEntityToDbModel(it) },
-        status = newsResponse.status,
-        totalResults = newsResponse.totalResults
-    )
+//    fun mapEntityToDbModel(newsResponse: NewsResponse): NewsResponseDbModel = NewsResponseDbModel(
+//        articleEntities = newsResponse.articles.map { mapArticleEntityToDbModel(it) },
+//        status = newsResponse.status,
+//        totalResults = newsResponse.totalResults
+//    )
+//
+//
+//    fun mapDbModelToEntity(newsResponseDbModel: NewsResponseDbModel): NewsResponse = NewsResponse(
+//        articles = newsResponseDbModel.articleEntities.map { mapArticleDbModelToEntity(it) },
+//        status = newsResponseDbModel.status,
+//        totalResults = newsResponseDbModel.totalResults
+//    )
 
 
-    fun mapDbModelToEntity(newsResponseDbModel: NewsResponseDbModel): NewsResponse = NewsResponse(
-        articles = newsResponseDbModel.articleEntities.map { mapArticleDbModelToEntity(it) },
-        status = newsResponseDbModel.status,
-        totalResults = newsResponseDbModel.totalResults
-    )
-
-
-    private fun mapArticleEntityToDbModel(article: Article): ArticleDbModel = ArticleDbModel(
+    fun mapArticleEntityToDbModel(article: Article): ArticleDbModel = ArticleDbModel(
         author = article.author,
         content = article.content,
         description = article.description,
@@ -31,11 +29,12 @@ class NewsMapper {
         sourceEntity = mapSourceEntityToDbMode(article.source),
         title = article.title,
         url = article.url,
-        urlToImage = article.urlToImage
+        urlToImage = article.urlToImage,
+        id = 0
     )
 
 
-    private fun mapArticleDbModelToEntity(articleDbModel: ArticleDbModel): Article = Article(
+    fun mapArticleDbModelToEntity(articleDbModel: ArticleDbModel): Article = Article(
         author = articleDbModel.author,
         content = articleDbModel.content,
         description = articleDbModel.description,
@@ -56,6 +55,11 @@ class NewsMapper {
         id = sourceDbModel.id,
         name = sourceDbModel.name
     )
+
+    fun mapListDbModelToEntity(listDbModel: List<ArticleDbModel>) =
+        listDbModel.map {
+            mapArticleDbModelToEntity(it)
+        }
 
 
 }
