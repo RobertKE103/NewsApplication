@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.news.R
 import com.example.news.databinding.FragmentSportBinding
+import com.example.news.presentation.details.DetailsFragment
 import com.example.news.presentation.main.viewPager.ItemViewPagerAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -44,6 +46,13 @@ class SportFragment : Fragment() {
         val recyclerView = binding.recV
         adapter = ItemViewPagerAdapter(requireActivity().application)
         recyclerView.adapter = adapter
+
+        adapter.onNewsItemClickListener = {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.nav_host_fragment, DetailsFragment.newInstance(it))
+                .addToBackStack(null)
+                .commit()
+        }
     }
 
 

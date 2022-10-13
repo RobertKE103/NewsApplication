@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.news.R
 import com.example.news.databinding.FragmentSportBinding
 import com.example.news.databinding.FragmentTechnologyBinding
+import com.example.news.presentation.details.DetailsFragment
 import com.example.news.presentation.main.viewPager.ItemViewPagerAdapter
 import com.example.news.presentation.main.viewPager.sports.SportViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -49,6 +50,13 @@ class TechnologyFragment : Fragment() {
         val recyclerView = binding.recV
         adapter = ItemViewPagerAdapter(requireActivity().application)
         recyclerView.adapter = adapter
+
+        adapter.onNewsItemClickListener = {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.nav_host_fragment, DetailsFragment.newInstance(it))
+                .addToBackStack(null)
+                .commit()
+        }
     }
 
 

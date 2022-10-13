@@ -29,6 +29,8 @@ class ItemViewPagerAdapter(private val application: Application) : ListAdapter<A
                     .placeholder(R.drawable.search)
                     .into(imgNews)
             }
+
+
         }
     }
 
@@ -40,5 +42,8 @@ class ItemViewPagerAdapter(private val application: Application) : ListAdapter<A
 
     override fun onBindViewHolder(holder: GeneralViewHolder, position: Int) {
         holder.bind(getItem(position))
+        holder.itemView.setOnClickListener {
+            onNewsItemClickListener?.invoke(getItem(position))
+        }
     }
 }

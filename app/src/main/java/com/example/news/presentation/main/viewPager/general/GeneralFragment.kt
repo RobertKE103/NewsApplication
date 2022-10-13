@@ -7,7 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import com.example.news.R
 import com.example.news.databinding.FragmentGeneralBinding
+import com.example.news.presentation.details.DetailsFragment
 import com.example.news.presentation.main.viewPager.ItemViewPagerAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -38,7 +41,6 @@ class GeneralFragment : Fragment() {
         } catch (e: Exception) {
             Log.d("exception", e.message.toString())
         }
-
     }
 
 
@@ -46,6 +48,14 @@ class GeneralFragment : Fragment() {
         val recyclerView = binding.recV
         adapter = ItemViewPagerAdapter(requireActivity().application)
         recyclerView.adapter = adapter
+
+        adapter.onNewsItemClickListener = {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.nav_host_fragment, DetailsFragment.newInstance(it))
+                .addToBackStack(null)
+                .commit()
+        }
+
     }
 
 
