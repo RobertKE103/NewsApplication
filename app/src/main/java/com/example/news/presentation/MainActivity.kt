@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_splash)
         CoroutineScope(Dispatchers.Main).launch {
-            delay(2000)
+            delay(1000)
             _binding = ActivityMainBinding.inflate(layoutInflater)
             setContentView(binding.root)
             binding.bottomNavMenu.setupWithNavController(
