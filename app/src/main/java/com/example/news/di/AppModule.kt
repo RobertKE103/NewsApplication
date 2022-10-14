@@ -25,19 +25,19 @@ val appModule = module {
     }
 
     viewModel{
-        SearchFragmentViewModel()
+        SearchFragmentViewModel(getEverythingUseCase = get(), addFavoriteUseCase = get())
     }
 
     viewModel{
-        GeneralViewModel(getHeadlinesUseCase = get())
+        GeneralViewModel(getHeadlinesUseCase = get(), addFavoriteUseCase = get())
     }
 
     viewModel{
-        TechnologyViewModel(getHeadlinesUseCase = get())
+        TechnologyViewModel(getHeadlinesUseCase = get(), addFavoriteUseCase = get())
     }
 
     viewModel{
-        SportViewModel(getHeadlinesUseCase = get())
+        SportViewModel(getHeadlinesUseCase = get(), addFavoriteUseCase = get())
     }
 
 

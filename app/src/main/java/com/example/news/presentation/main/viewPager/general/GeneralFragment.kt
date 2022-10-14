@@ -5,9 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import com.example.news.R
 import com.example.news.databinding.FragmentGeneralBinding
 import com.example.news.presentation.details.DetailsFragment
@@ -54,6 +52,7 @@ class GeneralFragment : Fragment() {
                 .replace(R.id.nav_host_fragment, DetailsFragment.newInstance(it))
                 .addToBackStack(null)
                 .commit()
+
         }
 
     }

@@ -5,12 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.news.domain.models.NewsResponse
+import com.example.news.domain.usecase.AddFavoriteUseCase
 import com.example.news.domain.usecase.GetHeadlinesUseCase
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
 class GeneralViewModel(
-    private val getHeadlinesUseCase: GetHeadlinesUseCase
+    private val getHeadlinesUseCase: GetHeadlinesUseCase,
+    private val addFavoriteUseCase: AddFavoriteUseCase
 ) : ViewModel() {
 
     private val _listNews = MutableLiveData<Response<NewsResponse>>()
