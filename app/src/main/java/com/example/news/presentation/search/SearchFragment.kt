@@ -40,6 +40,19 @@ class SearchFragment : Fragment() {
         setOnClickListener()
     }
 
+    override fun onResume() {
+        super.onResume()
+        checkEditText()
+    }
+
+    private fun checkEditText(){
+        val data = binding.inputKeyWord.text
+        if (!data.isNullOrEmpty()){
+            getNews(data.toString())
+            binding.noNewsText.visibility = View.GONE
+        }
+    }
+
 
     private fun setOnClickListener() {
         binding.inputKeyWord.setOnClickListener {

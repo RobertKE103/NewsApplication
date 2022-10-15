@@ -48,6 +48,11 @@ class MainFragment : Fragment() {
         viewPager.adapter = null
     }
 
+    override fun onResume() {
+        super.onResume()
+        setupViewPager()
+    }
+
 
     private fun setupViewPager() {
         viewPager = binding.myViewPager

@@ -36,6 +36,10 @@ class DetailsFragment : Fragment() {
         bind(article)
         setOnClickButton()
 
+        binding.iconBack.setOnClickListener {
+
+        }
+
     }
 
     private fun setOnClickButton() {
